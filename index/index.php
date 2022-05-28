@@ -2,11 +2,16 @@
 
 $url = $_SERVER['REQUEST_URI'];
 
+include 'pages/head.php';
 include 'pages/menu.php';
+include 'pages/acoes.php';
 
 echo match ($url) {
-    '/' => include 'pages/home.php',
-    '/login' => include 'pages/login.php',
-    '/cadastro' => include 'pages/cadastro.php',
-    default => include 'pages/404.php'
+    '/' => home(),
+    '/login' => login(),
+    '/cadastro' => cadastro(),
+    '/listar' => listar(),
+    default => erro404()
 };
+
+include 'pages/footer.php';
