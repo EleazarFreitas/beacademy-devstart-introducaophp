@@ -1,19 +1,22 @@
-<form class="shadow p-5 rounded">
-    <div>
-        <h1 class="pb-3">Cadastrar</h1>
-        <label class="form-label">Nome</label>
-        <br>
-        <input type="text" class="form-control">
-        <br>
-        <label class="form-label">E-mail ou telefone</label>
-        <input type="text" class="form-control">
-        <br>
-        <label class="form-label">Senha</label>
-        <input type="password" class="form-control">
-        <br>
-        <label class="form-label">Redigite a senha</label>
-        <input type="password" class="form-control">
-        <br>
-        <button class="btn btn-dark">Cadastrar</button>
-    </div>
-</form>
+<h1>Listar Contatos</h1>
+<table class="table mt-5">
+    <thead class="table-dark">
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <Th>Telefone</Th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+            foreach ($contatos as $cadaContato) {
+                $partes = explode(';',$cadaContato);
+                echo '<tr>';
+                    echo "<td>{$partes[0]}</td>";
+                    echo "<td>{$partes[1]}</td>";
+                    echo "<td>{$partes[2]}</td>";
+                echo '</tr>';
+            }
+        ?>
+    </tbody>
+</table>
