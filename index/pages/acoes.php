@@ -19,6 +19,31 @@ function cadastro () {
     }
     include 'pages/cadastro.php';
 };
+function editar () {
+    $id = $_GET['id'];
+    $contatos = file('dados/contatos.csv');
+
+    if ($_POST) {
+        $name = $_POST['nome'];
+        $email = $_POST['email'];
+        $telefone = $_POST['telefone'];
+
+        unlink('dados/contatos.csv');
+        $contatos[$id] = "{$name};{$email};{$telefone}".PHP_EOL;
+
+        $arquivo = fopen('dados/contatos.csv', 'a+');
+        foreach ($contatos as $cadaContato) {
+            fwrite($arquivo, $cadaContato);
+        };
+        fclose($arquivo);
+
+        $mensagem = 'Pronto! Contato atualizado.';
+        include 'pages/mensagem.php';
+    };
+
+    $dados = explode(';', $contatos[$id]);
+    include 'pages/editar.php';
+};
 function excluir () {
     $id = $_GET['id'];
     $contatos = file('dados/contatos.csv');

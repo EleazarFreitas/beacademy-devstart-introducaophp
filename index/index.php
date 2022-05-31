@@ -10,6 +10,7 @@ echo match ($url[0]) {
     '/' => home(),
     '/cadastro' => cadastro(),
     '/listar' => listar(),
+    '/editar' => editar(),
     '/excluir' => excluir(),
     '/login' => login(),
     default => erro404()
