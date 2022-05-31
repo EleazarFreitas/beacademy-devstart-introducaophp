@@ -19,6 +19,19 @@ function cadastro () {
     }
     include 'pages/cadastro.php';
 };
+function excluir () {
+    $id = $_GET['id'];
+    $contatos = file('dados/contatos.csv');
+    unset($contatos[$id]);
+    unlink('dados/contatos.csv');
+    $arquivo = fopen('dados/contatos.csv', 'a+');
+    foreach ($contatos as $cadaContato) {
+        fwrite($arquivo, $cadaContato);
+    };
+    fclose($arquivo);
+    $mensagem = 'Pronto! Arquivo excluído.';
+    include 'pages/mensagem.php';
+};
 function login () {
     include 'pages/login.php';
 };

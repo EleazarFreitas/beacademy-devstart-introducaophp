@@ -1,16 +1,17 @@
 <?php
 
-$url = $_SERVER['REQUEST_URI'];
+$url = explode('?', $_SERVER['REQUEST_URI']);
 
 include 'pages/head.php';
 include 'pages/menu.php';
 include 'pages/acoes.php';
 
-echo match ($url) {
+echo match ($url[0]) {
     '/' => home(),
-    '/login' => login(),
     '/cadastro' => cadastro(),
     '/listar' => listar(),
+    '/excluir' => excluir(),
+    '/login' => login(),
     default => erro404()
 };
 
